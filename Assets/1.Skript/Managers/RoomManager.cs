@@ -17,10 +17,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
         //방장이 씬을 바꾸면 모든 구성원의 맵이 바뀜
-        if (PhotonNetwork.IsConnectedAndReady)
+        if (!PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
+        else
         {
             PhotonNetwork.JoinLobby();
         }
+
     }
 
 
@@ -56,6 +61,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         Debug.Log(message);
         CreateAndJoinRoom();
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("Connected to servers again.");
+        PhotonNetwork.JoinLobby();
     }
 
     public override void OnCreatedRoom()
