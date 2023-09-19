@@ -23,10 +23,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
         }
     }
 
-    void Update()
-    {
-
-    }
 
     #region UI Callback Methods
 
@@ -64,7 +60,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnCreatedRoom()
     {
-        Debug.Log("A room is ok" + PhotonNetwork.CurrentRoom.Name);
+        Debug.Log("A room is " + PhotonNetwork.CurrentRoom.Name);
     }
 
     public override void OnJoinedRoom()

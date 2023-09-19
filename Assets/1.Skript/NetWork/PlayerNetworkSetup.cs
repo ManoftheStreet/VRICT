@@ -20,7 +20,7 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
             //SetLayerRecursively(AvatarHeadGameObject, 6);
             //SetLayerRecursively(AvatarBodyGameObject, 7);
         }
-        else
+        else 
         {
             //The Player is remote
             LocalXRRigGameobject.SetActive(false);

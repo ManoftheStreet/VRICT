@@ -18,26 +18,31 @@ public class AnimationController : MonoBehaviour
     {
         bool isMovingForward = move.action.ReadValue<Vector2>().y > 0;
         //Debug.Log("AnimateLegs On");
-        if (isMovingForward)
+        if (animator != null)
         {
-            //Debug.Log("isWalking True");
-            animator.SetBool("isWalking", true);
-            animator.SetFloat("animSpeed", 2f);
+            if (isMovingForward)
+            {
+                //Debug.Log("isWalking True");
+                animator.SetBool("isWalking", true);
+                animator.SetFloat("animSpeed", 2f);
+            }
+            else
+            {
+                //Debug.Log("isWalking false");
+                animator.SetBool("isWalking", true);
+                animator.SetFloat("animSpeed", -2f);
+            }
         }
-        else
-        {
-            //Debug.Log("isWalking false");
-            animator.SetBool("isWalking", true);
-            animator.SetFloat("animSpeed", -2f);
-        }
+       
     }
 
     private void StopAnimation(InputAction.CallbackContext obj)
     {
-        //Debug.Log("Stop");
-        animator.SetBool("isWalking", false);
-        animator.SetFloat("animSpeed", 0);
+        if (animator != null)
+        {
+            //Debug.Log("Stop");
+            animator.SetBool("isWalking", false);
+            animator.SetFloat("animSpeed", 0);
+        }
     }
-    
-    
 }
